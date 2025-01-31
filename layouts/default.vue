@@ -1,5 +1,5 @@
 <template>
-    <div class="min-h-screen bg-[#f5f5f5]">
+    <div>
         <NavigationBar v-if="!isHomePage" />
         <div>
             <!-- <UNotifications /> -->
