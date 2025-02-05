@@ -8,15 +8,15 @@
         </div>
         <div v-for="(item, index) in priceData" :key="index">
             <div v-if="!item.isBgDivider" class="container flex flex-col sm:flex-row gap-x-10 gap-y-5">
-                <Title class="block sm:hidden" label="item.title" :size="'md'" :align="'left'" :margin-bottom="false" />
+                <Title class="block sm:hidden" label="item.title" :size="'md'" :align="'center'" :marginBottom="false" />
                 <div class="w-full sm:w-[250px] relative pt-[60%] sm:pt-0 sm:h-[160px] flex-shrink-0 rounded-lg">
                     <img class="w-full h-full absolute top-0 left-0 object-cover" :src="'/assets/price_list/' + item.image" alt="">
                 </div>
                 <div class="w-full">
-                    <Title class="hidden sm:block" :label="item.title" :size="'md'" :align="'left'" />
-                    <p class="text-lg font-bold"><span v-if="item.duration">Duration: {{ item.duration }} | </span> Price: <span class="text-red-500">Rs. {{ item.price }}</span></p>
+                    <Title class="hidden sm:block" :label="item.title" :size="'md'" :align="'left'" :marginBottom="false" />
+                    <p class="text-lg font-bold text-center sm:text-left"><span v-if="item.duration">Duration: {{ item.duration }} | </span> Price: <span class="text-red-500">Rs. {{ item.price }}</span></p>
                     <UDivider class="mb-3" />
-                    <p>{{ item.desc }}</p>
+                    <p class="text-center sm:text-left">{{ item.desc }}</p>
                 </div>
             </div>
             <div v-else class="container py-20 bg-no-repeat bg-cover bg-center relative" :style="{ backgroundImage: `url('/assets/price_list/${item.image}')` }">
