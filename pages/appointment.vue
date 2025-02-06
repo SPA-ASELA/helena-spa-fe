@@ -1,5 +1,5 @@
 <template>
-    <div class="min-h-screen nav-size-box flex items-center bg-prim-100">
+    <div class="min-h-screen nav-size-box pb-10 flex items-center bg-prim-100">
         <div class="mt-10 grid grid-cols-1 md:grid-cols-2 gap-5">
             <div class="hidden md:block rounded-br-[200px] overflow-hidden relative">
                 <div class="grid place-items-center absolute top-0 right-0 bottom-0 left-0 bg-[#00000080]">
@@ -10,14 +10,20 @@
             <div class="container py-0">
                 <Title label="Enter Your Details" size="md" :align="'left'" color="black" />
                 <Input label="Name" :error="errors.name" @update:value="inpName" />
-                <Input label="Email" :error="errors.email" @update:value="inpEmail" type="email" />
+                <Input label="Email" :error="errors.email" @update:value="inpEmail" />
                 <Input label="Phone" :error="errors.phone" @update:value="inpPhone" />
                 <Select label="Service" :error="errors.service" :options="services" placeholder="Select Service" @update:value="inpService" />
-                <div class="ml-0 sm:ml-[138px] mb-5 grid grid-cols-2 gap-5">
-                    <input type="date" v-model="formState.date" class="w-full h-10 pl-3 mb-1 rounded-md outline-none border border-gray-300" />
-                    <input type="time" v-model="formState.time" class="w-full h-10 pl-3 mb-1 rounded-md outline-none border border-gray-300" />
+                <div class="ml-0 sm:ml-[133px] mb-5 grid grid-cols-2 gap-5">
+                    <div>
+                        <input type="date" v-model="formState.date" class="w-full h-10 pl-3 mb-1 rounded-md outline-none border"  :class="errors.date ? 'border-red-500' : 'border-white'" />
+                        <p v-if="errors.date" class="text-sm text-red-500">{{ errors.date }}</p>
+                    </div>
+                    <div>
+                        <input type="time" v-model="formState.time" class="w-full h-10 pl-3 mb-1 rounded-md outline-none border"  :class="errors.time ? 'border-red-500' : 'border-white'" />
+                        <p v-if="errors.time" class="text-sm text-red-500">{{ errors.time }}</p>
+                    </div>
                 </div>
-                <Button @click="submitContactForm()" class="ml-0 sm:ml-[140px]" label="Get Appointment" type="square" :full-width="true" />
+                <Button @click="submitAppointment()" class="ml-0 sm:ml-[140px]" label="Get Appointment" type="square" :full-width="true" />
             </div>
         </div>
     </div>
@@ -92,4 +98,77 @@ const inpService = (value) => {
     formState.service = value;
 };
 
+const formValidation = () => {
+    if (formState.name === '') {
+        errors.name = 'Please enter name';
+    } else {
+        errors.name = '';
+    }
+
+    if (formState.email === '') {
+        errors.email = 'Please enter email';
+    } else if(!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(formState.email)) {
+        errors.email = 'Please enter valid email';
+    } else {
+        errors.email = '';
+    }
+
+    if (formState.phone === '') {
+        errors.phone = 'Please enter phone';
+    } else if(formState.phone.length < 10) {
+        errors.phone = 'Please enter valid phone';
+    } else {
+        errors.phone = '';
+    }
+
+    if (formState.service === '') {
+        errors.service = 'Please select the service you want to book';
+    } else {
+        errors.service = '';
+    }
+
+    if (formState.date === '') {
+        errors.date = 'Please enter date';
+    } else {
+        errors.date = '';
+    }
+
+    if (formState.time === '') {
+        errors.time = 'Please enter time';
+    } else {
+        errors.time = '';
+    }
+};
+
+const submitAppointment = async () => {
+    formValidation();
+    if (errors.name === '' && errors.email === '' && errors.phone === '' && errors.service === '' && errors.date === '' && errors.time === '') {
+        console.log(formState);
+    }
+};
+
 </script>
+
+<style scoped>
+
+input {
+    box-sizing: border-box;
+    outline: 0;
+    padding: .75rem;
+    position: relative;
+}
+
+input::-webkit-calendar-picker-indicator {
+    background: transparent;
+    bottom: 0;
+    color: transparent;
+    cursor: pointer;
+    height: auto;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: auto;
+}
+
+</style>
