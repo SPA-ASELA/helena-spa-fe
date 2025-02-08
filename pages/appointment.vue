@@ -9,21 +9,27 @@
             </div>
             <div class="container py-0">
                 <Title label="Enter Your Details" size="md" :align="'left'" color="black" />
-                <Input label="Name" :error="errors.name" @update:value="inpName" />
-                <Input label="Email" :error="errors.email" @update:value="inpEmail" />
-                <Input label="Phone" :error="errors.phone" @update:value="inpPhone" />
-                <Select label="Service" :error="errors.service" :options="services" placeholder="Select Service" @update:value="inpService" />
+                <Input :value="formState.name" label="Name" :error="errors.name" @update:value="inpName" />
+                <Input :value="formState.email" label="Email" :error="errors.email" @update:value="inpEmail" />
+                <Input :value="formState.phone" label="Phone" :error="errors.phone" @update:value="inpPhone" />
+                <Select :value="formState.service" label="Service" :error="errors.service" :options="services"
+                    placeholder="Select Service" @update:value="inpService" />
                 <div class="ml-0 sm:ml-[133px] mb-5 grid grid-cols-2 gap-5">
                     <div>
-                        <input type="date" v-model="formState.date" class="w-full h-10 pl-3 mb-1 rounded-md outline-none border"  :class="errors.date ? 'border-red-500' : 'border-white'" />
+                        <input type="date" v-model="formState.date"
+                            class="w-full h-10 pl-3 mb-1 rounded-md outline-none border"
+                            :class="errors.date ? 'border-red-500' : 'border-white'" />
                         <p v-if="errors.date" class="text-sm text-red-500">{{ errors.date }}</p>
                     </div>
                     <div>
-                        <input type="time" v-model="formState.time" class="w-full h-10 pl-3 mb-1 rounded-md outline-none border"  :class="errors.time ? 'border-red-500' : 'border-white'" />
+                        <input type="time" v-model="formState.time"
+                            class="w-full h-10 pl-3 mb-1 rounded-md outline-none border"
+                            :class="errors.time ? 'border-red-500' : 'border-white'" />
                         <p v-if="errors.time" class="text-sm text-red-500">{{ errors.time }}</p>
                     </div>
                 </div>
-                <Button @click="submitAppointment()" class="ml-0 sm:ml-[140px]" label="Get Appointment" type="square" :full-width="true" />
+                <Button @click="submitAppointment()" class="ml-0 sm:ml-[140px]" label="Get Appointment" type="square"
+                    :full-width="true" />
             </div>
         </div>
     </div>
@@ -34,6 +40,9 @@ import Title from '@/components/uiKit/titles/title.vue';
 import Input from '@/components/uiKit/input.vue';
 import Select from '@/components/uiKit/select.vue';
 import Button from '@/components/uiKit/button.vue';
+import { apiService } from '../../services/apiService';
+import { API_ENDPOINTS } from '@/utils/constants/api';
+import Swal from 'sweetalert2';
 
 const formState = reactive({
     name: '',
@@ -107,7 +116,7 @@ const formValidation = () => {
 
     if (formState.email === '') {
         errors.email = 'Please enter email';
-    } else if(!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(formState.email)) {
+    } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(formState.email)) {
         errors.email = 'Please enter valid email';
     } else {
         errors.email = '';
@@ -115,7 +124,7 @@ const formValidation = () => {
 
     if (formState.phone === '') {
         errors.phone = 'Please enter phone';
-    } else if(formState.phone.length < 10) {
+    } else if (formState.phone.length < 10) {
         errors.phone = 'Please enter valid phone';
     } else {
         errors.phone = '';
@@ -143,14 +152,34 @@ const formValidation = () => {
 const submitAppointment = async () => {
     formValidation();
     if (errors.name === '' && errors.email === '' && errors.phone === '' && errors.service === '' && errors.date === '' && errors.time === '') {
-        console.log(formState);
+        try {
+            await apiService.request(API_ENDPOINTS.BOOKING.SUBMIT, formState);
+            formState.name = '';
+            formState.email = '';
+            formState.phone = '';
+            formState.service = '';
+            formState.date = '';
+            formState.time = '';
+            Swal.fire({
+                title: 'Success!',
+                text: 'Thank you for contacting us. We will get back to you soon.',
+                icon: 'success',
+                confirmButtonText: 'OK'
+            });
+        } catch (error) {
+            Swal.fire({
+                title: 'Error!',
+                text: error.message,
+                icon: 'error',
+                confirmButtonText: 'OK'
+            });
+        }
     }
 };
 
 </script>
 
 <style scoped>
-
 input {
     box-sizing: border-box;
     outline: 0;
@@ -169,6 +198,4 @@ input::-webkit-calendar-picker-indicator {
     right: 0;
     top: 0;
     width: auto;
-}
-
-</style>
+}</style>

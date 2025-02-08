@@ -3,12 +3,14 @@
         <TopBanner image="contact_us/bg.webp" title="Contact Us" />
         <div class="container">
             <div class="container max-w-[800px] w-full mx-auto rounded-xl bg-prim-100">
-                <Input label="Name" :error="errors.name" @update:value="inpName" />
-                <Input label="E-Mail" type="email" :error="errors.email" @update:value="inpEmail" />
-                <Input label="Phone" :error="errors.phone" @update:value="inpPhone" />
-                <TextArea label="Comment" :error="errors.comment" @update:value="inpComment" />
+                <Input :value="formState.name" label="Name" :error="errors.name" @update:value="inpName" />
+                <Input :value="formState.email" label="E-Mail" type="email" :error="errors.email"
+                    @update:value="inpEmail" />
+                <Input :value="formState.phone" label="Phone" :error="errors.phone" @update:value="inpPhone" />
+                <TextArea :value="formState.comment" label="Comment" :error="errors.comment" @update:value="inpComment" />
                 <div>
-                    <Button @click="submitContactForm()" class="ml-0 sm:ml-[140px]" label="Shop Now" type="square" :full-width="true" />
+                    <Button @click="submitContactForm()" class="ml-0 sm:ml-[140px]" label="Shop Now" type="square"
+                        :full-width="true" />
                 </div>
             </div>
         </div>
@@ -20,6 +22,9 @@ import TopBanner from '@/components/uiKit/banner-top.vue';
 import Input from '@/components/uiKit/input.vue';
 import TextArea from '@/components/uiKit/text-area.vue';
 import Button from '@/components/uiKit/button.vue';
+import { apiService } from '../../services/apiService';
+import { API_ENDPOINTS } from '@/utils/constants/api';
+import Swal from 'sweetalert2';
 
 const formState = reactive({
     name: '',
@@ -60,7 +65,7 @@ const formValidation = () => {
 
     if (formState.email === '') {
         errors.email = 'Please enter email';
-    } else if(!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(formState.email)) {
+    } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(formState.email)) {
         errors.email = 'Please enter valid email';
     } else {
         errors.email = '';
@@ -68,7 +73,7 @@ const formValidation = () => {
 
     if (formState.phone === '') {
         errors.phone = 'Please enter phone';
-    } else if(formState.phone.length < 10) {
+    } else if (formState.phone.length < 9) {
         errors.phone = 'Please enter valid phone';
     } else {
         errors.phone = '';
@@ -84,7 +89,26 @@ const formValidation = () => {
 const submitContactForm = async () => {
     formValidation();
     if (errors.name === '' && errors.email === '' && errors.phone === '' && errors.comment === '') {
-        console.log(formState);
+        try {
+            await apiService.request(API_ENDPOINTS.CONTACT_US.SUBMIT, formState);
+            formState.name = '';
+            formState.email = '';
+            formState.phone = '';
+            formState.comment = '';
+            Swal.fire({
+                title: 'Success!',
+                text: 'Thank you for contacting us. We will get back to you soon.',
+                icon: 'success',
+                confirmButtonText: 'OK'
+            });
+        } catch (error) {
+            Swal.fire({
+                title: 'Error!',
+                text: error.message,
+                icon: 'error',
+                confirmButtonText: 'OK'
+            });
+        }
     }
 };
 
