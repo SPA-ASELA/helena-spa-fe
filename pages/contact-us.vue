@@ -1,5 +1,6 @@
 <template>
     <div class="min-h-screen bg-prim-50">
+        <Spinner :is-loading="isLoading" />
         <TopBanner image="contact_us/bg.webp" title="Contact Us" />
         <div class="container">
             <div class="container max-w-[800px] w-full mx-auto rounded-xl bg-prim-100">
@@ -22,6 +23,7 @@ import TopBanner from '@/components/uiKit/banner-top.vue';
 import Input from '@/components/uiKit/input.vue';
 import TextArea from '@/components/uiKit/text-area.vue';
 import Button from '@/components/uiKit/button.vue';
+import Spinner from '@/components/uiKit/spinner.vue';
 import { apiService } from '../../services/apiService';
 import { API_ENDPOINTS } from '@/utils/constants/api';
 import Swal from 'sweetalert2';
@@ -32,7 +34,7 @@ const formState = reactive({
     phone: '',
     comment: ''
 });
-
+const isLoading = ref(false);
 const errors = reactive({
     name: '',
     email: '',
@@ -89,6 +91,7 @@ const formValidation = () => {
 const submitContactForm = async () => {
     formValidation();
     if (errors.name === '' && errors.email === '' && errors.phone === '' && errors.comment === '') {
+        isLoading.value = true;
         try {
             await apiService.request(API_ENDPOINTS.CONTACT_US.SUBMIT, formState);
             formState.name = '';
@@ -109,6 +112,7 @@ const submitContactForm = async () => {
                 confirmButtonText: 'OK'
             });
         }
+        isLoading.value = false;
     }
 };
 

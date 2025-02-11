@@ -1,5 +1,6 @@
 <template>
     <div class="min-h-screen nav-size-box pb-10 flex items-center bg-prim-100">
+        <Spinner :is-loading="isLoading" />
         <div class="mt-10 grid grid-cols-1 md:grid-cols-2 gap-5">
             <div class="hidden md:block rounded-br-[200px] overflow-hidden relative">
                 <div class="grid place-items-center absolute top-0 right-0 bottom-0 left-0 bg-[#00000080]">
@@ -40,6 +41,7 @@ import Title from '@/components/uiKit/titles/title.vue';
 import Input from '@/components/uiKit/input.vue';
 import Select from '@/components/uiKit/select.vue';
 import Button from '@/components/uiKit/button.vue';
+import Spinner from '@/components/uiKit/spinner.vue';
 import { apiService } from '../../services/apiService';
 import { API_ENDPOINTS } from '@/utils/constants/api';
 import Swal from 'sweetalert2';
@@ -52,7 +54,7 @@ const formState = reactive({
     date: '',
     time: ''
 });
-
+const isLoading = ref(false);
 const errors = reactive({
     name: '',
     email: '',
@@ -152,6 +154,7 @@ const formValidation = () => {
 const submitAppointment = async () => {
     formValidation();
     if (errors.name === '' && errors.email === '' && errors.phone === '' && errors.service === '' && errors.date === '' && errors.time === '') {
+        isLoading.value = true;
         try {
             await apiService.request(API_ENDPOINTS.BOOKING.SUBMIT, formState);
             formState.name = '';
@@ -174,6 +177,7 @@ const submitAppointment = async () => {
                 confirmButtonText: 'OK'
             });
         }
+        isLoading.value = false;
     }
 };
 
