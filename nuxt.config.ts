@@ -11,6 +11,9 @@ export default defineNuxtConfig({
     'nuxt-swiper',
     '@nuxt/image',
   ],
+  plugins: [
+    '~/plugins/axios.js'
+  ],
   tailwindcss: {
     exposeConfig: true,
     configPath: './tailwind.config.js'

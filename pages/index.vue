@@ -5,11 +5,11 @@
         <div class="py-10 bg-prim-100">
             <div class="container grid grid-cols-1 sm:grid-cols-3 gap-10 sm:gap-5">
                 <div v-for="(item, index) in sec_1" :key="index" class="flex flex-col gap-5 text-center text-prim-950">
-                    <div class="w-full relative pt-[65%] bg-red-50">
+                    <div class="w-full relative pt-[65%]">
                         <img :src="'/assets/home/sec_1/' + item.image"
                             class="w-full h-full absolute top-0 left-0 object-cover" />
                     </div>
-                    <Title :label="item.title" :size="'md'" :align="'center'" :color="'prim-dark'" />
+                    <Title :label="item.title" :size="'md'" :align="'center'" :color="'prim-dark'" :margin-bottom="false" />
                     <p>{{ item.description }}</p>
                 </div>
             </div>
@@ -94,8 +94,9 @@
                 </div>
             </div>
         </div>
-        <div class="py-[20vh] bg-[url('/assets/home/bg-shop.webp')] bg-no-repeat bg-cover">
-            <div class="container flex flex-col items-center gap-8">
+        <div class="py-[20vh] bg-[url('/assets/home/bg-shop.webp')] bg-no-repeat bg-cover relative">
+            <div class="absolute top-0 right-0 bottom-0 left-0 bg-[#00000080]"></div>
+            <div class="container flex flex-col items-center gap-8 relative">
                 <Title label="Rejuvenate with Nature's Best" size="lg" :align="'center'" color="white" />
                 <p class="text-center text-white">Explore Our Exclusive Range of Organic & Spa Products</p>
                 <Button label="Shop Now" />
