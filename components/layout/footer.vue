@@ -1,5 +1,10 @@
 <template>
     <div>
+        <div v-if="isAppointmentBtnVisible" class="container flex flex-col items-center bg-prim-100">
+            <Title label="Click here for Appointments" :size="'lg'" color="prim-dark" :align="'center'" />
+            <Button @click="$router.push('/appointment')" class="max-w-[600px] w-full" label="Get Appointment" type="square"
+                :full-width="true" />
+        </div>
         <div class="bg-prim-500">
             <div class="container grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-3">
                 <div class="text-center md:text-right">
@@ -29,5 +34,12 @@
 </template>
 
 <script setup>
+import Title from '@/components/uiKit/titles/title.vue';
+import Button from '@/components/uiKit/button.vue';
+
+const route = useRoute();
+const router = useRouter();
+
+const isAppointmentBtnVisible = computed(() => route.path !== '/' && route.path !== '/appointment');
 
 </script>

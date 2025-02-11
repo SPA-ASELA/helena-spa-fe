@@ -5,7 +5,7 @@
         <div class="py-10 bg-prim-100">
             <div class="container grid grid-cols-1 sm:grid-cols-3 gap-10 sm:gap-5">
                 <div v-for="(item, index) in sec_1" :key="index" class="flex flex-col gap-5 text-center text-prim-950">
-                    <div class="w-full relative pt-[65%] bg-red-50">
+                    <div class="w-full relative pt-[65%]">
                         <img :src="'/assets/home/sec_1/' + item.image"
                             class="w-full h-full absolute top-0 left-0 object-cover" />
                     </div>

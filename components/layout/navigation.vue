@@ -7,7 +7,7 @@
                     <img class="w-[100px]" src="@/assets/images/logo/logo.png" alt="LOGO - Helena Spa">
                 </nuxt-link>
                 <div class="hidden lg:flex gap-10">
-                    <nuxt-link to="/">
+                    <nuxt-link to="/about-us">
                         <div class="flex flex-col items-center">
                             <p class="font-bold text-prim-950">What is Helena</p>
                             <p class="text-[10px] text-prim-700">about helena</p>
@@ -19,13 +19,13 @@
                             <p class="text-[10px] text-prim-700">menu list</p>
                         </div>
                     </nuxt-link>
-                    <nuxt-link to="/">
+                    <nuxt-link to="/price-list">
                         <div class="flex flex-col items-center">
                             <p class="font-bold text-prim-950">Price List</p>
                             <p class="text-[10px] text-prim-700">price list</p>
                         </div>
                     </nuxt-link>
-                    <nuxt-link to="/">
+                    <nuxt-link to="/contact-us">
                         <div class="flex flex-col items-center">
                             <p class="font-bold text-prim-950">Contact Us</p>
                             <p class="text-[10px] text-prim-700">contact us</p>
@@ -55,10 +55,10 @@
                     <nuxt-link class="mb-8" to="/">
                         <img class="w-[100px]" src="@/assets/images/logo/logo.png" alt="LOGO - Helena Spa">
                     </nuxt-link>
-                    <nuxt-link to="/">What is Helena</nuxt-link>
+                    <nuxt-link to="/about-us">What is Helena</nuxt-link>
                     <nuxt-link to="/menu-list">Menu List</nuxt-link>
-                    <nuxt-link to="/">Price List</nuxt-link>
-                    <nuxt-link to="/">Contact Us</nuxt-link>
+                    <nuxt-link to="/price-list">Price List</nuxt-link>
+                    <nuxt-link to="/contact-us">Contact Us</nuxt-link>
                     <nuxt-link to="/">Products</nuxt-link>
                 </div>
             </div>
@@ -111,7 +111,7 @@ const handleScroll = () => {
 
 .slider-transition-enter-from,
 .slider-transition-leave-to {
-    right: -100px;
+    right: -100%;
     opacity: 0;
 }
 

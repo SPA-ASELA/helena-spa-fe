@@ -1,9 +1,6 @@
 <template>
     <div>
-        <div class="w-full h-[300px]">
-            <img class="w-full h-full object-cover" v-if="image" :src="'/assets/menu_list/' + image" alt="">
-        </div>
-        <ImgTitle :label="title" />
+        <BannerStoryTop :image="'menu_list/' + image" :title="title" />
         <div class="p-3 pb-10 bg-white">
             <div v-for="(item, index) in types" :key="index">
                 <Title :label="item.title" :size="'md'" color="prim-light" />
@@ -42,7 +39,7 @@
 </template>
 
 <script setup>
-import ImgTitle from '@/components/uiKit/titles/img-title-2.vue';
+import BannerStoryTop from '@/components/uiKit/banner-story-top.vue';
 import Title from '@/components/uiKit/titles/title.vue';
 
 const props = defineProps({
