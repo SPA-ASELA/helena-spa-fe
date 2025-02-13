@@ -30,6 +30,17 @@ import Therapies from '@/components/menu-list/therapies.vue';
 import SkinCare from '@/components/menu-list/skinCare.vue';
 import handFoot from '@/components/menu-list/handFoot.vue';
 
+const route = useRoute();
+
+onMounted(() => {
+    if (route.query.type && list.find(item => item.name === route.query.type)) {
+        const index = list.findIndex(item => item.name === route.query.type);
+        selectList(index);
+    } else {
+        selectList(0);
+    }
+});
+
 const list = reactive([
     { name: 'Massages', isActive: true },
     { name: 'Therapies', isActive: false },
@@ -42,6 +53,7 @@ const selectList = (index) => {
         item.isActive = false;
     });
     list[index].isActive = true;
+    window.scrollTo({ top: 0, behavior: 'smooth' });
 };
 
 </script>

@@ -7,34 +7,10 @@
                     <img class="w-[100px]" src="@/assets/images/logo/logo.png" alt="LOGO - Helena Spa">
                 </nuxt-link>
                 <div class="hidden lg:flex gap-10">
-                    <nuxt-link to="/about-us">
+                    <nuxt-link v-for="(item, index) in navigations" :key="index" :to="item.link">
                         <div class="flex flex-col items-center">
-                            <p class="font-bold text-prim-950">What is Helena</p>
-                            <p class="text-[10px] text-prim-700">about helena</p>
-                        </div>
-                    </nuxt-link>
-                    <nuxt-link to="/menu-list">
-                        <div class="flex flex-col items-center">
-                            <p class="font-bold text-prim-950">Menu List</p>
-                            <p class="text-[10px] text-prim-700">menu list</p>
-                        </div>
-                    </nuxt-link>
-                    <nuxt-link to="/price-list">
-                        <div class="flex flex-col items-center">
-                            <p class="font-bold text-prim-950">Price List</p>
-                            <p class="text-[10px] text-prim-700">price list</p>
-                        </div>
-                    </nuxt-link>
-                    <nuxt-link to="/contact-us">
-                        <div class="flex flex-col items-center">
-                            <p class="font-bold text-prim-950">Contact Us</p>
-                            <p class="text-[10px] text-prim-700">contact us</p>
-                        </div>
-                    </nuxt-link>
-                    <nuxt-link to="/">
-                        <div class="flex flex-col items-center">
-                            <p class="font-bold text-prim-950">Products</p>
-                            <p class="text-[10px] text-prim-700">shop our products</p>
+                            <p class="font-bold">{{ item.titleLg }}</p>
+                            <p class="text-[10px] text-prim-700">{{ item.titleSm }}</p>
                         </div>
                     </nuxt-link>
                 </div>
@@ -46,20 +22,16 @@
         </div>
     </transition>
     <transition name="slider-transition">
-        <div v-if="isMobileSliderVisible" @click="isMobileSliderVisible = false"
+        <div v-if="isMobileSliderVisible" @click="navigationClose()"
             class="flex lg:hidden justify-end fixed top-0 left-0 bottom-0 right-0 bg-[#0000003c] z-50">
             <div @click.stop class="p-2 max-w-[400px] w-full h-screen bg-prim-50">
-                <UIcon @click="isMobileSliderVisible = false" name="i-material-symbols:close"
+                <UIcon @click="navigationClose()" name="i-material-symbols:close"
                     class="w-6 h-6 absolute right-2 cursor-pointer" />
                 <div class="h-full flex flex-col justify-center items-center gap-6">
                     <nuxt-link class="mb-8" to="/">
                         <img class="w-[100px]" src="@/assets/images/logo/logo.png" alt="LOGO - Helena Spa">
                     </nuxt-link>
-                    <nuxt-link to="/about-us">What is Helena</nuxt-link>
-                    <nuxt-link to="/menu-list">Menu List</nuxt-link>
-                    <nuxt-link to="/price-list">Price List</nuxt-link>
-                    <nuxt-link to="/contact-us">Contact Us</nuxt-link>
-                    <nuxt-link to="/">Products</nuxt-link>
+                    <nuxt-link v-for="(item, index) in navigations" :key="index" :to="item.link" @click="navigationClose()">{{ item.titleLg }}</nuxt-link>
                 </div>
             </div>
         </div>
@@ -72,6 +44,12 @@ const route = useRoute();
 const isNavigationVisible = ref(true);
 let lastScrollTop = ref(0);
 const isMobileSliderVisible = ref(false);
+const navigations = reactive([
+    { titleLg: 'What is Helena', titleSm: 'about helena', link: '/about-us' },
+    { titleLg: 'Menu List', titleSm: 'menu list', link: '/menu-list' },
+    { titleLg: 'Price List', titleSm: 'price list', link: '/price-list' },
+    { titleLg: 'Contact Us', titleSm: 'contact us', link: '/contact-us' },
+])
 
 const isHomePage = computed(() => route.path === '/');
 
@@ -95,9 +73,26 @@ const handleScroll = () => {
     lastScrollTop.value = st <= 0 ? 0 : st;
 };
 
+const navigationClose = () => {
+    isMobileSliderVisible.value = false;
+};
+
 </script>
 
 <style scoped>
+a {
+    color: #703E00;
+    transition: color .3s ease-in-out;
+}
+
+a:hover {
+    color: #EE8E15;
+}
+
+.router-link-active {
+    color: #D17B0D;
+}
+
 .nav-transition-enter-from,
 .nav-transition-leave-to {
     top: -100px;

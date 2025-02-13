@@ -47,11 +47,13 @@
                                 <p>{{ li }}</p>
                             </div>
                         </div>
-                        <div class="p-3 flex justify-end items-center gap-1 text-blue-500">
-                            <span>See More</span>
-                            <div
-                                class="w-5 h-5 flex-shrink-0 mb-1 border border-blue-500 rounded-md grid place-items-center">
-                                <UIcon name="i-ic:sharp-arrow-forward-ios" class="w-3 h-3" />
+                        <div class="p-3 flex justify-end items-center text-blue-500">
+                            <div @click="router.push(`/menu-list?type=${encodeURIComponent(item.title)}`)" class="flex items-center gap-1 cursor-pointer">
+                                <span>See More</span>
+                                <div
+                                    class="w-5 h-5 flex-shrink-0 mb-1 border border-blue-500 rounded-md grid place-items-center">
+                                    <UIcon name="i-ic:sharp-arrow-forward-ios" class="w-3 h-3" />
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -99,18 +101,19 @@
             <div class="container flex flex-col items-center gap-8 relative">
                 <Title label="Rejuvenate with Nature's Best" size="lg" :align="'center'" color="white" />
                 <p class="text-center text-white">Explore Our Exclusive Range of Organic & Spa Products</p>
-                <Button label="Shop Now" />
+                <Button @click="shopNow()" label="Shop Now" />
             </div>
         </div>
         <div class="py-10 bg-prim-100">
             <div class="container grid grid-cols-1 lg:grid-cols-2 gap-5">
-                <div v-for="(item, index) in sec_4" :key="index" class="p-3 flex items-center gap-3 bg-prim-500">
-                    <div class="w-[200px] h-[200px] flex-shrink-0 bg-red-50">
-                        <img class="w-full h-full object-cover" :src="'/assets/home/sec_3/' + item.image" alt="">
+                <div v-for="(item, index) in sec_4" :key="index" class="p-3 flex flex-col sm:flex-row items-center gap-3 bg-prim-500">
+                    <Title class="block sm:hidden" :label="item.title" :size="'md'" :align="'center'" :marginBottom="false" />
+                    <div class="w-full sm:w-[200px] sm:h-[200px] pt-[60%] sm:pt-0 flex-shrink-0 bg-red-50 relative">
+                        <img class="w-full h-full absolute sm:relative top-0 left-0 object-cover" :src="'/assets/home/sec_3/' + item.image" alt="">
                     </div>
                     <div>
-                        <Title :label="item.title" :size="'md'" :align="'left'" />
-                        <p>{{ item.description }}</p>
+                        <Title class="hidden sm:block" :label="item.title" :size="'md'" :align="'left'" />
+                        <p class="text-center sm:text-left">{{ item.description }}</p>
                     </div>
                 </div>
             </div>
@@ -126,6 +129,9 @@ import Title from '@/components/uiKit/titles/title.vue';
 import ImgTitle from '@/components/uiKit/titles/img-title-1.vue';
 import Button from '@/components/uiKit/button.vue';
 import Reviews from '@/components/home/reviews.vue';
+import Swal from 'sweetalert2';
+
+const router = useRouter();
 
 const sec_1 = reactive([
     { image: '1.webp', title: 'Pindasweda', description: 'Revitalize your body with warm herbal poultices, gently applied to soothe muscles, ease tension, and restore balance, leaving you feeling refreshed and rejuvenated.' },
@@ -144,14 +150,25 @@ const sec_3 = reactive([
     { image: '1.webp', title: 'Massages', list: ['Head, Neck & Shoulder Massage', 'Neck & Shoulder Massage', 'Back Massage'] },
     { image: '2.webp', title: 'Therapies', list: ['Shirodhara', 'Shirodhara & Full Body Massage', 'Pindasweda'] },
     { image: '3.webp', title: 'Skin Care', list: ['Full Body Scrub', 'Foot Scrub & Herbal Foot Pack', 'Face Massage'] },
-    { image: '4.webp', title: 'Hand & Foot ', list: ['Pedicure', 'Manicure'] },
+    { image: '4.webp', title: 'Hand & Foot', list: ['Pedicure', 'Manicure'] },
 ]);
 
 const sec_4 = reactive([
-    { image: '1.webp', title: 'Relaxation & Stress Relief ksdgf sdif irf', description: 'Spa treatments like massages and aromatherapy help relax your body and mind, reducing stress levels.' },
+    { image: '1.webp', title: 'Relaxation & Stress Relief', description: 'Spa treatments like massages and aromatherapy help relax your body and mind, reducing stress levels.' },
     { image: '2.webp', title: 'Improved Circulation', description: 'Massages and steam baths stimulate blood flow, promoting better circulation and oxygenation of tissues.' },
     { image: '3.webp', title: 'Skin Rejuvenation', description: 'Facials and scrubs exfoliate and hydrate your skin, leaving it glowing and healthy.' },
-    { image: '4.webp', title: 'Pain Relief ', description: 'Targeted therapies like back and neck massages alleviate muscle tension and chronic pain.' },
+    {
+        image: '4.webp', title: 'Pain Relief ', description: 'Targeted therapies like back and neck massages alleviate muscle tension and chronic pain.'
+    },
 ]);
+
+const shopNow = () => {
+    Swal.fire({
+        title: 'Shop Now',
+        text: 'This feature is under development',
+        icon: 'info',
+        confirmButtonText: 'OK'
+    });
+};
 
 </script>
