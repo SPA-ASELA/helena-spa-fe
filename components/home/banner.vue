@@ -6,7 +6,8 @@
                 <img :src="'/assets/home/banners/' + banner.image" class="w-full h-full object-cover" />
                 <div class="absolute top-0 right-0 bottom-0 left-0 h-full text-center text-white">
                     <div class="h-full flex flex-col justify-center items-center">
-                        <Title class="max-w-[900px] mb-[40px]" :label="banner.title" :size="'lg'" :align="'center'" :color="'white'" />
+                        <Title class="max-w-[900px] mb-[40px]" :label="banner.title" :size="'lg'" :align="'center'"
+                            :color="'white'" />
                         <p class="max-w-[900px] mb-[40px]">{{ banner.description }}</p>
                         <Button @click="btnClick(banner)" :label="banner.buttonType === 'shop' ? 'Shop Now' : 'Book Now'" />
                     </div>
@@ -24,6 +25,7 @@ import Button from '@/components/uiKit/button.vue';
 import Title from '@/components/uiKit/titles/title.vue';
 //   import 'swiper/css/navigation';
 //   import 'swiper/css/pagination';
+import Swal from 'sweetalert2';
 
 // Define the modules you want to use
 const modules = [Navigation, Pagination, Autoplay];
@@ -37,8 +39,15 @@ const banners = reactive([
 ]);
 
 const btnClick = (banner) => {
-    if(banner.buttonType === 'book') {
+    if (banner.buttonType === 'book') {
         router.push('/appointment')
+    } else {
+        Swal.fire({
+            title: 'Shop Now',
+            text: 'This feature is under development',
+            icon: 'info',
+            confirmButtonText: 'OK'
+        });
     }
 }
 

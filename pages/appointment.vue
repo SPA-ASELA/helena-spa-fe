@@ -106,6 +106,8 @@ const inpPhone = (value) => {
 };
 
 const inpService = (value) => {
+    console.log(value);
+    
     formState.service = value;
 };
 
