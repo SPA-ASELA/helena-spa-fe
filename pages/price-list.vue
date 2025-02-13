@@ -8,7 +8,7 @@
         </div>
         <div v-for="(item, index) in priceData" :key="index">
             <div v-if="!item.isBgDivider" class="container flex flex-col sm:flex-row gap-x-10 gap-y-5">
-                <Title class="block sm:hidden" label="item.title" :size="'md'" :align="'center'" :marginBottom="false" />
+                <Title class="block sm:hidden" :label="item.title" :size="'md'" :align="'center'" :marginBottom="false" />
                 <div class="w-full sm:w-[250px] relative pt-[60%] sm:pt-0 sm:h-[160px] flex-shrink-0 rounded-lg">
                     <img class="w-full h-full absolute top-0 left-0 object-cover" :src="'/assets/price_list/' + item.image" alt="">
                 </div>
