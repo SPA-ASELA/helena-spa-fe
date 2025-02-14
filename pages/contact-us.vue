@@ -28,6 +28,17 @@ import { apiService } from '../../services/apiService';
 import { API_ENDPOINTS } from '@/utils/constants/api';
 import Swal from 'sweetalert2';
 
+useHead({
+    title: 'Contact Helena Spa – Book Your Wellness Experience Today',
+    meta: [
+        { name: 'description', content: 'Reach out to Helena Spa in Ella, Sri Lanka. Call us or visit our serene spa to book your Ayurvedic massage, beauty treatments, or wellness therapy.'},
+        { charset: 'utf-8' },
+        { property: 'og:title', content: 'Contact Helena Spa – Book Your Wellness Experience Today' },
+        { property: 'og:description', content: 'Reach out to Helena Spa in Ella, Sri Lanka. Call us or visit our serene spa to book your Ayurvedic massage, beauty treatments, or wellness therapy.' },
+        { property: 'og:image', content: 'https://helenaspa.lk/_nuxt/logo.CtJ0T2KF.png' },
+    ]
+});
+
 const formState = reactive({
     name: '',
     email: '',

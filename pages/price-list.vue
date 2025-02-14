@@ -34,6 +34,17 @@
 import TopBanner from '@/components/uiKit/banner-top.vue';
 import Title from '@/components/uiKit/titles/title.vue';
 
+useHead({
+    title: 'Helena Spa Prices – Transparent & Affordable Ayurvedic Packages in Ella, Sri Lanka',
+    meta: [
+        { name: 'description', content: 'Discover clear and competitive pricing for our range of authentic Ayurvedic treatments at Helena Spa in Ella, Sri Lanka. Enjoy exceptional value on massages, facials, herbal therapies, and more, ensuring a luxurious wellness experience for every budget.'},
+        { charset: 'utf-8' },
+        { property: 'og:title', content: 'Helena Spa Prices – Transparent & Affordable Ayurvedic Packages in Ella, Sri Lanka' },
+        { property: 'og:description', content: 'Discover clear and competitive pricing for our range of authentic Ayurvedic treatments at Helena Spa in Ella, Sri Lanka. Enjoy exceptional value on massages, facials, herbal therapies, and more, ensuring a luxurious wellness experience for every budget.' },
+        { property: 'og:image', content: 'https://helenaspa.lk/_nuxt/logo.CtJ0T2KF.png' },
+    ]
+});
+
 const photoGallery = reactive(['1-1.webp', '1-2.webp', '1-3.webp', '1-4.webp']);
 const priceData = reactive([
     { isBgDivider: false, title: 'Head, Neck & Shoulder Massage', duration: '30 mins', price: '3,500', image: '2-1.webp', desc: 'Relieve tension and stress with this focused massage, targeting key pressure points in the head, neck, and shoulders. Ideal for those who experience stiffness from stress or prolonged sitting.' },
