@@ -131,6 +131,17 @@ import Button from '@/components/uiKit/button.vue';
 import Reviews from '@/components/home/reviews.vue';
 import Swal from 'sweetalert2';
 
+useHead({
+    title: 'Helena Spa Ella – Relax, Rejuvenate & Revitalize',
+    meta: [
+        { name: 'description', content: 'Experience the best Ayurvedic spa treatments at Helena Spa in Ella, Sri Lanka. Enjoy full-body massages, facials, steam baths, and more for ultimate relaxation.'},
+        { charset: 'utf-8' },
+        { property: 'og:title', content: 'Helena Spa Ella – Relax, Rejuvenate & Revitalize' },
+        { property: 'og:description', content: 'Experience the best Ayurvedic spa treatments at Helena Spa in Ella, Sri Lanka. Enjoy full-body massages, facials, steam baths, and more for ultimate relaxation.' },
+        { property: 'og:image', content: 'https://helenaspa.lk/_nuxt/logo.CtJ0T2KF.png' },
+    ]
+});
+
 const router = useRouter();
 
 const sec_1 = reactive([
