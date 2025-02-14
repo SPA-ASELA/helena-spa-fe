@@ -46,6 +46,17 @@ import { apiService } from '../../services/apiService';
 import { API_ENDPOINTS } from '@/utils/constants/api';
 import Swal from 'sweetalert2';
 
+useHead({
+    title: 'Book an Appointment – Helena Spa Ella, Sri Lanka',
+    meta: [
+        { name: 'description', content: 'Schedule your spa appointment at Helena Spa, Ella. Choose from a variety of Ayurvedic treatments, massages, and beauty therapies for a truly relaxing experience.'},
+        { charset: 'utf-8' },
+        { property: 'og:title', content: 'Book an Appointment – Helena Spa Ella, Sri Lanka' },
+        { property: 'og:description', content: 'Schedule your spa appointment at Helena Spa, Ella. Choose from a variety of Ayurvedic treatments, massages, and beauty therapies for a truly relaxing experience.' },
+        { property: 'og:image', content: 'https://helenaspa.lk/_nuxt/logo.CtJ0T2KF.png' },
+    ]
+});
+
 const formState = reactive({
     name: '',
     email: '',

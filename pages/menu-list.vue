@@ -30,6 +30,17 @@ import Therapies from '@/components/menu-list/therapies.vue';
 import SkinCare from '@/components/menu-list/skinCare.vue';
 import handFoot from '@/components/menu-list/handFoot.vue';
 
+useHead({
+    title: 'Spa & Massage Services at Helena Spa – Ella, Sri Lanka',
+    meta: [
+        { name: 'description', content: 'Indulge in a range of spa services, including full-body massages, Shirodhara, steam baths, pedicures, facials, and herbal treatments at Helena Spa in Ella.'},
+        { charset: 'utf-8' },
+        { property: 'og:title', content: 'Spa & Massage Services at Helena Spa – Ella, Sri Lanka' },
+        { property: 'og:description', content: 'Indulge in a range of spa services, including full-body massages, Shirodhara, steam baths, pedicures, facials, and herbal treatments at Helena Spa in Ella.' },
+        { property: 'og:image', content: 'https://helenaspa.lk/_nuxt/logo.CtJ0T2KF.png' },
+    ]
+});
+
 const route = useRoute();
 
 onMounted(() => {
