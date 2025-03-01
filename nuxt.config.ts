@@ -6,8 +6,8 @@ export default defineNuxtConfig({
     preference: 'light'
   },
   modules: [
-    '@nuxtjs/tailwindcss',
     '@nuxt/ui',
+    '@nuxtjs/tailwindcss',
     'nuxt-swiper',
     '@nuxt/image',
   ],

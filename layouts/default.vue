@@ -1,5 +1,6 @@
 <template>
     <div>
+        <UNotifications />
         <NavigationBar v-if="!isHomePage" />
         <div>
             <slot />
@@ -9,8 +10,8 @@
 </template>
 
 <script setup>
-import NavigationBar from '@/components/layout/navigation.vue';
-import Footer from '@/components/layout/footer.vue';
+import NavigationBar from '@/components/global/navigation.vue';
+import Footer from '@/components/global/footer.vue';
 
 const route = useRoute();
 
