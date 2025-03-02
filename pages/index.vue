@@ -124,12 +124,11 @@
   
 <script setup>
 import Banner from '@/components/home/banner.vue';
-import NavigationBar from '@/components/layout/navigation.vue';
+import NavigationBar from '@/components/global/navigation.vue';
 import Title from '@/components/uiKit/titles/title.vue';
 import ImgTitle from '@/components/uiKit/titles/img-title-1.vue';
 import Button from '@/components/uiKit/button.vue';
 import Reviews from '@/components/home/reviews.vue';
-import Swal from 'sweetalert2';
 
 useHead({
     title: 'Helena Spa Ella – Relax, Rejuvenate & Revitalize',
@@ -174,12 +173,7 @@ const sec_4 = reactive([
 ]);
 
 const shopNow = () => {
-    Swal.fire({
-        title: 'Shop Now',
-        text: 'This feature is under development',
-        icon: 'info',
-        confirmButtonText: 'OK'
-    });
+    router.push('/shop');
 };
 
 </script>

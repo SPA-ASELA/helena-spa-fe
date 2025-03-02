@@ -23,9 +23,6 @@ import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 import 'swiper/css';
 import Button from '@/components/uiKit/button.vue';
 import Title from '@/components/uiKit/titles/title.vue';
-//   import 'swiper/css/navigation';
-//   import 'swiper/css/pagination';
-import Swal from 'sweetalert2';
 
 // Define the modules you want to use
 const modules = [Navigation, Pagination, Autoplay];
@@ -42,12 +39,7 @@ const btnClick = (banner) => {
     if (banner.buttonType === 'book') {
         router.push('/appointment')
     } else {
-        Swal.fire({
-            title: 'Shop Now',
-            text: 'This feature is under development',
-            icon: 'info',
-            confirmButtonText: 'OK'
-        });
+        router.push('/shop')
     }
 }
 
