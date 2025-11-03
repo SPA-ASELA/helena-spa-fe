@@ -11,9 +11,9 @@
             <div class="container grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-3">
                 <div class="text-center md:text-right">
                     <p class="mb-3 text-2xl text-center md:text-right font-bold">Address</p>
-                    <p>Wellawaya-Ella-Kumbalwela</p>
-                    <p>Hwy,</p>
-                    <p>Ella 90090</p>
+                    <p>No.55/1,Bandarawela road</p>
+                    <p>Ella town,</p>
+                    <p>Ella</p>
                 </div>
                 <div class="flex justify-center">
                     <nuxt-link to="/">
@@ -23,7 +23,7 @@
                 <div class="text-center md:text-left">
                     <p class="mb-3 text-2xl text-center md:text-left font-bold">Contact Us</p>
                     <a href="mailto:helena@gmail.com">helena@gmail.com</a> <br>
-                    <a href="tel:+94776999488">+94 77 699 9488</a>
+                    <a href="tel:+94776699488">+94 77 669 9488</a>
                 </div>
             </div>
         </div>
