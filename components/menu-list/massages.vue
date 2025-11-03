@@ -23,7 +23,7 @@ const types = reactive([
         title: 'Back Massage',
         image: 'massages/Back Massage.webp',
         details: [
-            { title: 'Back Massage', duration: '30 Mins', price: 'Rs. 3,500' },
+            { title: 'Back Massage', duration: '30 Mins', price: 'Rs. 4,000' },
         ],
         description: '<p>Our Back Massage combines Ayurvedic herbal oils with deep pressure techniques to release tension in the back and improve spinal health. Perfect for alleviating lower back pain and tightness, this treatment stimulates blood flow and promotes deep relaxation. It is especially beneficial for those with sedentary lifestyles or stress-related stiffness.</p>'
     },
