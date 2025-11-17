@@ -118,6 +118,41 @@
                 </div>
             </div>
         </div>
+        <!-- Video Gallery Section -->
+        <div class="py-16 bg-prim-50">
+            <div class="container">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 max-w-4xl mx-auto">
+                    <div class="relative w-full rounded-xl overflow-hidden shadow-2xl bg-transparent group hover:scale-[1.02] transition-transform duration-300">
+                        <div class="relative w-full" style="aspect-ratio: 9/16; min-height: 400px;">
+                            <video 
+                                autoplay 
+                                muted 
+                                loop 
+                                playsinline
+                                class="absolute inset-0 w-full h-full object-cover"
+                                @loadedmetadata="adjustVideo($event.target)"
+                            >
+                                <source src="/assets/home/videos/v1.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                    </div>
+                    <div class="relative w-full rounded-xl overflow-hidden shadow-2xl bg-transparent group hover:scale-[1.02] transition-transform duration-300">
+                        <div class="relative w-full" style="aspect-ratio: 9/16; min-height: 400px;">
+                            <video 
+                                autoplay 
+                                muted 
+                                loop 
+                                playsinline
+                                class="absolute inset-0 w-full h-full object-cover"
+                                @loadedmetadata="adjustVideo($event.target)"
+                            >
+                                <source src="/assets/home/videos/v2.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <Reviews />
     </div>
 </template>
@@ -174,6 +209,15 @@ const sec_4 = reactive([
 
 const shopNow = () => {
     router.push('/shop');
+};
+
+const adjustVideo = (video) => {
+    if (video && video.videoWidth && video.videoHeight) {
+        const container = video.parentElement;
+        if (container) {
+            container.style.aspectRatio = `${video.videoWidth} / ${video.videoHeight}`;
+        }
+    }
 };
 
 </script>
