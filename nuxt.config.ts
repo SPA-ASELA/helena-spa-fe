@@ -20,6 +20,34 @@ export default defineNuxtConfig({
   },
   app: {
     head: {
+      link: [
+        {
+          rel: 'icon',
+          type: 'image/x-icon',
+          href: '/favicon.ico'
+        },
+        {
+          rel: 'icon',
+          type: 'image/png',
+          sizes: '32x32',
+          href: '/favicon.ico'
+        },
+        {
+          rel: 'icon',
+          type: 'image/png',
+          sizes: '16x16',
+          href: '/favicon.ico'
+        },
+        {
+          rel: 'apple-touch-icon',
+          sizes: '180x180',
+          href: '/favicon.ico'
+        },
+        {
+          rel: 'shortcut icon',
+          href: '/favicon.ico'
+        }
+      ],
       script: [
         {
           src: 'https://www.googletagmanager.com/gtag/js?id=G-67E8EY2K9T',
