@@ -2,24 +2,37 @@
 export default defineNuxtConfig({
   compatibilityDate: '2024-11-01',
   devtools: { enabled: true },
+
   colorMode: {
     preference: 'light'
   },
+
   modules: [
     '@nuxt/ui',
     '@nuxtjs/tailwindcss',
     'nuxt-swiper',
     '@nuxt/image',
   ],
+
   plugins: [
     '~/plugins/axios.js'
   ],
+
   tailwindcss: {
     exposeConfig: true,
     configPath: './tailwind.config.js'
   },
+
   app: {
     head: {
+      meta: [
+        // ⭐ Add this ONLY — AdSense verification
+        {
+          name: "google-adsense-account",
+          content: "ca-pub-5075378095924370"
+        }
+      ],
+
       link: [
         {
           rel: 'icon',
@@ -48,6 +61,7 @@ export default defineNuxtConfig({
           href: '/favicon.ico'
         }
       ],
+
       script: [
         {
           src: 'https://www.googletagmanager.com/gtag/js?id=G-67E8EY2K9T',
