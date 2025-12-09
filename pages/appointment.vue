@@ -219,8 +219,13 @@ const submitAppointment = async () => {
         // Your WhatsApp number (without +)
         const whatsappNumber = "94776699488";
 
-        // Use web.whatsapp.com instead - works better on desktop
-        const url = `https://web.whatsapp.com/send?phone=${whatsappNumber}&text=${message}`;
+        // Detect if mobile device
+        const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+
+        // Use different URLs for mobile vs desktop
+        const url = isMobile 
+            ? `https://api.whatsapp.com/send?phone=${whatsappNumber}&text=${message}`
+            : `https://web.whatsapp.com/send?phone=${whatsappNumber}&text=${message}`;
 
         // Open in a new window
         window.open(url, '_blank');
