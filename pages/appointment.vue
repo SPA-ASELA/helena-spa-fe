@@ -164,33 +164,66 @@ const formValidation = () => {
     }
 };
 
+// const submitAppointment = async () => {
+//     formValidation();
+//     if (errors.name === '' && errors.email === '' && errors.phone === '' && errors.service === '' && errors.date === '' && errors.time === '') {
+//         isLoading.value = true;
+//         try {
+//             await apiService.request(API_ENDPOINTS.BOOKING.SUBMIT, formState);
+//             formState.name = '';
+//             formState.email = '';
+//             formState.phone = '';
+//             formState.service = '';
+//             formState.date = '';
+//             formState.time = '';
+//             Swal.fire({
+//                 title: 'Success!',
+//                 text: 'Thank you for contacting us. We will get back to you soon.',
+//                 icon: 'success',
+//                 confirmButtonText: 'OK'
+//             });
+//         } catch (error) {
+//             Swal.fire({
+//                 title: 'Error!',
+//                 text: error.message,
+//                 icon: 'error',
+//                 confirmButtonText: 'OK'
+//             });
+//         }
+//         isLoading.value = false;
+//     }
+// };
+
 const submitAppointment = async () => {
     formValidation();
-    if (errors.name === '' && errors.email === '' && errors.phone === '' && errors.service === '' && errors.date === '' && errors.time === '') {
-        isLoading.value = true;
-        try {
-            await apiService.request(API_ENDPOINTS.BOOKING.SUBMIT, formState);
-            formState.name = '';
-            formState.email = '';
-            formState.phone = '';
-            formState.service = '';
-            formState.date = '';
-            formState.time = '';
-            Swal.fire({
-                title: 'Success!',
-                text: 'Thank you for contacting us. We will get back to you soon.',
-                icon: 'success',
-                confirmButtonText: 'OK'
-            });
-        } catch (error) {
-            Swal.fire({
-                title: 'Error!',
-                text: error.message,
-                icon: 'error',
-                confirmButtonText: 'OK'
-            });
-        }
-        isLoading.value = false;
+    if (
+        errors.name === '' &&
+        errors.email === '' &&
+        errors.phone === '' &&
+        errors.service === '' &&
+        errors.date === '' &&
+        errors.time === ''
+    ) {
+        // Create the message with proper line breaks
+        const message = 
+            `Hello Helena Spa,%0A%0A` +
+            `I would like to make a booking.%0A%0A` +
+            `Name: ${formState.name}%0A` +
+            `Email: ${formState.email}%0A` +
+            `Phone: ${formState.phone}%0A` +
+            `Service: ${formState.service}%0A` +
+            `Date: ${formState.date}%0A` +
+            `Time: ${formState.time}%0A%0A` +
+            `Please confirm my appointment.`;
+
+        // Your WhatsApp number (without +)
+        const whatsappNumber = "94776699488";
+
+        // Use web.whatsapp.com instead - works better on desktop
+        const url = `https://web.whatsapp.com/send?phone=${whatsappNumber}&text=${message}`;
+
+        // Open in a new window
+        window.open(url, '_blank');
     }
 };
 
