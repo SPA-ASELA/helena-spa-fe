@@ -50,6 +50,7 @@ const navigations = reactive([
     { titleLg: 'Price List', titleSm: 'price list', link: '/price-list' },
     { titleLg: 'Contact Us', titleSm: 'contact us', link: '/contact-us' },
     { titleLg: 'Products', titleSm: 'shop our products', link: '/shop'},
+    { titleLg: 'Blog', titleSm: 'latest articles', link: '/blog'},
 ])
 
 const isHomePage = computed(() => route.path === '/');
