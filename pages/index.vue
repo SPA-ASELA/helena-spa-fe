@@ -153,6 +153,7 @@
                 </div>
             </div>
         </div>
+        <GoogleAd />
         <Reviews />
     </div>
 </template>
@@ -164,6 +165,7 @@ import Title from '@/components/uiKit/titles/title.vue';
 import ImgTitle from '@/components/uiKit/titles/img-title-1.vue';
 import Button from '@/components/uiKit/button.vue';
 import Reviews from '@/components/home/reviews.vue';
+import GoogleAd from '@/components/global/GoogleAd.vue';
 
 useHead({
     title: 'Helena Spa Ella – Relax, Rejuvenate & Revitalize',
