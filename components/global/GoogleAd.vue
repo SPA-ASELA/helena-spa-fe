@@ -2,10 +2,9 @@
   <div class="google-ad-container my-4">
     <ins class="adsbygoogle"
          style="display:block"
+         data-ad-format="autorelaxed"
          data-ad-client="ca-pub-5075378095924370"
-         data-ad-slot="4126675430"
-         data-ad-format="auto"
-         data-full-width-responsive="true"></ins>
+         data-ad-slot="9296499185"></ins>
   </div>
 </template>
 
