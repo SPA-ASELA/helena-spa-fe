@@ -48,7 +48,7 @@
 </template>
 
 <script setup>
-import { apiService } from '../../services/apiService';
+import { apiService } from '@/services/apiService';
 import { API_ENDPOINTS } from '@/utils/constants/api';
 import ItemsSkeleton from '@/components/skeletons/items.vue';
 import Item from '@/components/global/itemCard.vue';

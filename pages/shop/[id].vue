@@ -135,7 +135,7 @@
 </template>
 
 <script setup>
-import { apiService } from '../../services/apiService';
+import { apiService } from '@/services/apiService';
 import { API_ENDPOINTS } from '@/utils/constants/api';
 import { BASE_URL } from '@/utils/constants/const';
 import Button from '@/components/uiKit/button.vue';

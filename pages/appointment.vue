@@ -42,7 +42,7 @@ import Input from '@/components/uiKit/input.vue';
 import Select from '@/components/uiKit/select.vue';
 import Button from '@/components/uiKit/button.vue';
 import Spinner from '@/components/uiKit/spinner.vue';
-import { apiService } from '../../services/apiService';
+import { apiService } from '@/services/apiService';
 import { API_ENDPOINTS } from '@/utils/constants/api';
 import Swal from 'sweetalert2';
 
