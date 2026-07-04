@@ -22,7 +22,7 @@
                 </div>
                 <div class="text-center md:text-left">
                     <p class="mb-3 text-2xl text-center md:text-left font-bold">Contact Us</p>
-                    <a href="mailto:helena@gmail.com">helena@gmail.com</a> <br>
+                    <a href="mailto:dilanwijesundara1989@gmail.com">dilanwijesundara1989@gmail.com</a> <br>
                     <a href="tel:+94776699488" class="mb-3 inline-block">+94 77 669 9488</a>
                     <div class="flex flex-col items-center md:items-start space-y-1 mt-4">
                         <nuxt-link to="/privacy-policy" class="hover:underline">Privacy Policy</nuxt-link>

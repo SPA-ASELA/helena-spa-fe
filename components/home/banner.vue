@@ -7,7 +7,7 @@
                 <div class="absolute top-0 right-0 bottom-0 left-0 h-full text-center text-white">
                     <div class="h-full flex flex-col justify-center items-center">
                         <Title class="max-w-[900px] mb-[40px]" :label="banner.title" :size="'lg'" :align="'center'"
-                            :color="'white'" />
+                            :color="'white'" tag="h1" />
                         <p class="max-w-[900px] mb-[40px]">{{ banner.description }}</p>
                         <Button @click="btnClick(banner)" :label="banner.buttonType === 'shop' ? 'Shop Now' : 'Book Now'" />
                     </div>

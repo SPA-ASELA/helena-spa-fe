@@ -1,7 +1,7 @@
 <template>
     <div class="py-20 md:py-32 bg-prim-50">
         <div class="container bg-white p-8 md:p-14 rounded shadow">
-            <Title label="Terms & Conditions" :size="'xl'" color="prim-dark" :align="'center'" class="mb-10" />
+            <Title label="Terms & Conditions" :size="'xl'" color="prim-dark" :align="'center'" class="mb-10" tag="h1" />
             <div class="prose max-w-none text-gray-700">
                 <p>Welcome to Helena Spa. These terms and conditions outline the rules and regulations for the use of Helena Spa's Website and Services.</p>
 
@@ -37,10 +37,18 @@
 <script setup>
 import Title from '@/components/uiKit/titles/title.vue';
 
-useHead({
-  title: 'Terms & Conditions | Helena Spa',
-  meta: [
-    { name: 'description', content: 'Terms and Conditions of Helena Spa.' }
-  ]
-})
+useSeoMeta({
+    title: 'Terms & Conditions | Helena Spa Ella',
+    description: 'Terms and Conditions of Helena Spa. Read our policies regarding booking, cancellations, and usage of our services.',
+    ogTitle: 'Terms & Conditions | Helena Spa Ella',
+    ogDescription: 'Terms and Conditions of Helena Spa. Read our policies regarding booking, cancellations, and usage of our services.',
+    ogImage: 'https://helenaspa.lk/assets/logo.png',
+});
+
+useSchemaOrg([
+    defineWebPage({
+        name: 'Terms & Conditions - Helena Spa',
+        description: 'Terms and Conditions of Helena Spa. Read our policies regarding booking, cancellations, and usage of our services.',
+    })
+]);
 </script>

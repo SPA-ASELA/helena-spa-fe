@@ -1,7 +1,7 @@
 <template>
     <div class="py-20 md:py-32 bg-prim-50">
         <div class="container bg-white p-8 md:p-14 rounded shadow">
-            <Title label="Privacy Policy" :size="'xl'" color="prim-dark" :align="'center'" class="mb-10" />
+            <Title label="Privacy Policy" :size="'xl'" color="prim-dark" :align="'center'" class="mb-10" tag="h1" />
             <div class="prose max-w-none text-gray-700">
                 <p>Welcome to Helena Spa. This Privacy Policy outlines how we collect, use, disclose, and safeguard your information when you visit our website or use our services.</p>
                 
@@ -29,7 +29,7 @@
                 <p>We will only keep your personal information for as long as it is necessary for the purposes set out in this privacy notice, unless a longer retention period is required or permitted by law (such as tax, accounting or other legal requirements).</p>
 
                 <h3 class="text-xl font-bold mt-6 mb-2">5. Contact Us</h3>
-                <p>If you have questions or comments about this notice, you may email us at helena@gmail.com or by post to:</p>
+                <p>If you have questions or comments about this notice, you may email us at dilanwijesundara1989@gmail.com or by post to:</p>
                 <p class="mt-2 text-sm italic">
                     Helena Spa<br>
                     No.55/1, Bandarawela road<br>
@@ -43,10 +43,18 @@
 <script setup>
 import Title from '@/components/uiKit/titles/title.vue';
 
-useHead({
-  title: 'Privacy Policy | Helena Spa',
-  meta: [
-    { name: 'description', content: 'Privacy Policy of Helena Spa.' }
-  ]
-})
+useSeoMeta({
+    title: 'Privacy Policy | Helena Spa Ella',
+    description: 'Privacy Policy of Helena Spa. Learn how we collect, use, and protect your information.',
+    ogTitle: 'Privacy Policy | Helena Spa Ella',
+    ogDescription: 'Privacy Policy of Helena Spa. Learn how we collect, use, and protect your information.',
+    ogImage: 'https://helenaspa.lk/assets/logo.png',
+});
+
+useSchemaOrg([
+    defineWebPage({
+        name: 'Privacy Policy - Helena Spa',
+        description: 'Privacy Policy of Helena Spa. Learn how we collect, use, and protect your information.',
+    })
+]);
 </script>

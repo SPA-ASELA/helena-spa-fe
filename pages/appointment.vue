@@ -6,10 +6,10 @@
                 <div class="grid place-items-center absolute top-0 right-0 bottom-0 left-0 bg-[#00000080]">
                     <Title label="Enter Your Details" size="md" :align="'center'" color="white" />
                 </div>
-                <img class="w-full h-full object-cover" src="/assets/appointment/bg.webp" alt="">
+                <NuxtImg class="w-full h-full object-cover" src="/assets/appointment/bg.webp" alt="Spa Booking Appointment" />
             </div>
             <div class="container py-0">
-                <Title label="Enter Your Details" size="md" :align="'left'" color="black" />
+                <Title label="Enter Your Details" size="md" :align="'left'" color="black" tag="h1" />
                 <Input :value="formState.name" label="Name" :error="errors.name" @update:value="inpName" />
                 <Input :value="formState.email" label="Email" :error="errors.email" @update:value="inpEmail" />
                 <Input :value="formState.phone" label="Phone" :error="errors.phone" @update:value="inpPhone" />
@@ -46,16 +46,20 @@ import { apiService } from '../../services/apiService';
 import { API_ENDPOINTS } from '@/utils/constants/api';
 import Swal from 'sweetalert2';
 
-useHead({
+useSeoMeta({
     title: 'Book an Appointment – Helena Spa Ella, Sri Lanka',
-    meta: [
-        { name: 'description', content: 'Schedule your spa appointment at Helena Spa, Ella. Choose from a variety of Ayurvedic treatments, massages, and beauty therapies for a truly relaxing experience.'},
-        { charset: 'utf-8' },
-        { property: 'og:title', content: 'Book an Appointment – Helena Spa Ella, Sri Lanka' },
-        { property: 'og:description', content: 'Schedule your spa appointment at Helena Spa, Ella. Choose from a variety of Ayurvedic treatments, massages, and beauty therapies for a truly relaxing experience.' },
-        { property: 'og:image', content: 'https://helenaspa.lk/_nuxt/logo.CtJ0T2KF.png' },
-    ]
+    description: 'Schedule your spa appointment at Helena Spa, Ella. Choose from a variety of Ayurvedic treatments, massages, and beauty therapies for a truly relaxing experience.',
+    ogTitle: 'Book an Appointment – Helena Spa Ella, Sri Lanka',
+    ogDescription: 'Schedule your spa appointment at Helena Spa, Ella. Choose from a variety of Ayurvedic treatments, massages, and beauty therapies for a truly relaxing experience.',
+    ogImage: 'https://helenaspa.lk/assets/logo.png',
 });
+
+useSchemaOrg([
+    defineWebPage({
+        name: 'Book an Appointment – Helena Spa',
+        description: 'Schedule your spa appointment at Helena Spa, Ella.',
+    })
+]);
 
 const formState = reactive({
     name: '',

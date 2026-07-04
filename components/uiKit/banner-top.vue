@@ -2,7 +2,7 @@
     <div class="nav-size-box bg-center bg-no-repeat bg-cover relative" :style="{ backgroundImage: `url('/assets/${image}')` }">
         <div class="absolute top-0 right-0 bottom-0 left-0 bg-[#00000080]"></div>
         <div class="container py-20 relative">
-            <Title :label="title" size="lg" :align="'center'" color="white" :margin-bottom="false" />
+            <Title :label="title" size="lg" :align="'center'" color="white" :margin-bottom="false" tag="h1" />
         </div>
     </div>
 </template>

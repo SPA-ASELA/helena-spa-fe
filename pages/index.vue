@@ -6,7 +6,7 @@
             <div class="container grid grid-cols-1 sm:grid-cols-3 gap-10 sm:gap-5">
                 <div v-for="(item, index) in sec_1" :key="index" class="flex flex-col gap-5 text-center text-prim-950">
                     <div class="w-full relative pt-[65%]">
-                        <img :src="'/assets/home/sec_1/' + item.image"
+                        <NuxtImg :src="'/assets/home/sec_1/' + item.image" :alt="item.title"
                             class="w-full h-full absolute top-0 left-0 object-cover" />
                     </div>
                     <Title :label="item.title" :size="'md'" :align="'center'" :color="'prim-dark'" :margin-bottom="false" />
@@ -18,7 +18,7 @@
             <div class="container py-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-5 gap-y-14">
                 <div v-for="(item, index) in sec_2" :key="index" class="flex gap-5">
                     <div class="w-[100px] h-[100px] flex-shrink-0 rounded-full grid place-items-center bg-prim-100">
-                        <img class="w-[60px]" :src="'/assets/home/sec_2/' + item.image" alt="">
+                        <NuxtImg class="w-[60px]" :src="'/assets/home/sec_2/' + item.image" :alt="item.title" />
                     </div>
                     <div class="text-white">
                         <p class="mb-4 font-bold">{{ item.title }}</p>
@@ -35,7 +35,7 @@
                     <div v-for="(item, index) in sec_3" :key="index"
                         class="w-full bg-white rounded-bl-md rounded-br-md flex flex-col justify-between">
                         <div class="w-full h-[200px]">
-                            <img class="w-full h-full object-cover" :src="'/assets/home/sec_3/' + item.image" alt="">
+                            <NuxtImg class="w-full h-full object-cover" :src="'/assets/home/sec_3/' + item.image" :alt="item.title" />
                         </div>
                         <div class="p-3">
                             <Title :label="item.title" :size="'md'" :align="'center'" />
@@ -78,7 +78,7 @@
                             <span class="w-8 h-8 flex-shrink-0 rounded-full border-8 border-prim-100 bg-prim-500"></span>
                         </div>
                     </div>
-                    <img class="w-[300px] lg:w-[400px]" src="/assets/home/health-benefits.webp" alt="">
+                    <NuxtImg class="w-[300px] lg:w-[400px]" src="/assets/home/health-benefits.webp" alt="Health Benefits of Spa Treatments" />
                     <div class="w-full flex flex-col justify-between items-start gap-5 md:gap-y-20">
                         <div class="ml-20 md:ml-0 flex items-center gap-5">
                             <span class="w-8 h-8 flex-shrink-0 rounded-full border-8 border-prim-100 bg-prim-500"></span>
@@ -109,7 +109,7 @@
                 <div v-for="(item, index) in sec_4" :key="index" class="p-3 flex flex-col sm:flex-row items-center gap-3 bg-prim-500">
                     <Title class="block sm:hidden" :label="item.title" :size="'md'" :align="'center'" :marginBottom="false" />
                     <div class="w-full sm:w-[200px] sm:h-[200px] pt-[60%] sm:pt-0 flex-shrink-0 bg-red-50 relative">
-                        <img class="w-full h-full absolute sm:relative top-0 left-0 object-cover" :src="'/assets/home/sec_3/' + item.image" alt="">
+                        <NuxtImg class="w-full h-full absolute sm:relative top-0 left-0 object-cover" :src="'/assets/home/sec_3/' + item.image" :alt="item.title" />
                     </div>
                     <div>
                         <Title class="hidden sm:block" :label="item.title" :size="'md'" :align="'left'" />
@@ -167,16 +167,20 @@ import Button from '@/components/uiKit/button.vue';
 import Reviews from '@/components/home/reviews.vue';
 import GoogleAd from '@/components/global/GoogleAd.vue';
 
-useHead({
+useSeoMeta({
     title: 'Helena Spa Ella – Relax, Rejuvenate & Revitalize',
-    meta: [
-        { name: 'description', content: 'Experience the best Ayurvedic spa treatments at Helena Spa in Ella, Sri Lanka. Enjoy full-body massages, facials, steam baths, and more for ultimate relaxation.'},
-        { charset: 'utf-8' },
-        { property: 'og:title', content: 'Helena Spa Ella – Relax, Rejuvenate & Revitalize' },
-        { property: 'og:description', content: 'Experience the best Ayurvedic spa treatments at Helena Spa in Ella, Sri Lanka. Enjoy full-body massages, facials, steam baths, and more for ultimate relaxation.' },
-        { property: 'og:image', content: 'https://helenaspa.lk/_nuxt/logo.CtJ0T2KF.png' },
-    ]
+    description: 'Experience the best Ayurvedic spa treatments at Helena Spa in Ella, Sri Lanka. Enjoy full-body massages, facials, steam baths, and more for ultimate relaxation.',
+    ogTitle: 'Helena Spa Ella – Relax, Rejuvenate & Revitalize',
+    ogDescription: 'Experience the best Ayurvedic spa treatments at Helena Spa in Ella, Sri Lanka. Enjoy full-body massages, facials, steam baths, and more for ultimate relaxation.',
+    ogImage: 'https://helenaspa.lk/assets/logo.png',
 });
+
+useSchemaOrg([
+    defineWebPage({
+        name: 'Helena Spa Ella',
+        description: 'Experience the best Ayurvedic spa treatments at Helena Spa in Ella, Sri Lanka.',
+    })
+]);
 
 const router = useRouter();
 

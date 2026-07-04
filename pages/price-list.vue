@@ -3,14 +3,14 @@
         <TopBanner image="price_list/bg.webp" title="Price List" />
         <div class="container bg-[url('/assets/price_list/bg-1.webp')] bg-no-repeat bg-cover grid grid-cols-4 gap-5">
             <div v-for="(item, index) in photoGallery" :key="index" class="w-full relative pt-[80%] rounded-lg overflow-hidden">
-                <img class="w-full h-full absolute top-0 left-0 object-cover" :src="'/assets/price_list/' + item" alt="">
+                <NuxtImg class="w-full h-full absolute top-0 left-0 object-cover" :src="'/assets/price_list/' + item" alt="Spa environment" />
             </div>
         </div>
         <div v-for="(item, index) in priceData" :key="index">
             <div v-if="!item.isBgDivider" class="container flex flex-col sm:flex-row gap-x-10 gap-y-5">
                 <Title class="block sm:hidden" :label="item.title" :size="'md'" :align="'center'" :marginBottom="false" />
                 <div class="w-full sm:w-[250px] relative pt-[60%] sm:pt-0 sm:h-[160px] flex-shrink-0 rounded-lg">
-                    <img class="w-full h-full absolute top-0 left-0 object-cover" :src="'/assets/price_list/' + item.image" alt="">
+                    <NuxtImg class="w-full h-full absolute top-0 left-0 object-cover" :src="'/assets/price_list/' + item.image" :alt="item.title" />
                 </div>
                 <div class="w-full">
                     <Title class="hidden sm:block" :label="item.title" :size="'md'" :align="'left'" :marginBottom="false" />
@@ -34,16 +34,20 @@
 import TopBanner from '@/components/uiKit/banner-top.vue';
 import Title from '@/components/uiKit/titles/title.vue';
 
-useHead({
+useSeoMeta({
     title: 'Helena Spa Prices – Transparent & Affordable Ayurvedic Packages in Ella, Sri Lanka',
-    meta: [
-        { name: 'description', content: 'Discover clear and competitive pricing for our range of authentic Ayurvedic treatments at Helena Spa in Ella, Sri Lanka. Enjoy exceptional value on massages, facials, herbal therapies, and more, ensuring a luxurious wellness experience for every budget.'},
-        { charset: 'utf-8' },
-        { property: 'og:title', content: 'Helena Spa Prices – Transparent & Affordable Ayurvedic Packages in Ella, Sri Lanka' },
-        { property: 'og:description', content: 'Discover clear and competitive pricing for our range of authentic Ayurvedic treatments at Helena Spa in Ella, Sri Lanka. Enjoy exceptional value on massages, facials, herbal therapies, and more, ensuring a luxurious wellness experience for every budget.' },
-        { property: 'og:image', content: 'https://helenaspa.lk/_nuxt/logo.CtJ0T2KF.png' },
-    ]
+    description: 'Discover clear and competitive pricing for our range of authentic Ayurvedic treatments at Helena Spa in Ella, Sri Lanka. Enjoy exceptional value on massages, facials, herbal therapies, and more, ensuring a luxurious wellness experience for every budget.',
+    ogTitle: 'Helena Spa Prices – Transparent & Affordable Ayurvedic Packages in Ella, Sri Lanka',
+    ogDescription: 'Discover clear and competitive pricing for our range of authentic Ayurvedic treatments at Helena Spa in Ella, Sri Lanka. Enjoy exceptional value on massages, facials, herbal therapies, and more, ensuring a luxurious wellness experience for every budget.',
+    ogImage: 'https://helenaspa.lk/assets/logo.png',
 });
+
+useSchemaOrg([
+    defineWebPage({
+        name: 'Helena Spa Prices',
+        description: 'Discover clear and competitive pricing for our range of authentic Ayurvedic treatments at Helena Spa in Ella.',
+    })
+]);
 
 const photoGallery = reactive(['1-1.webp', '1-2.webp', '1-3.webp', '1-4.webp']);
 const priceData = reactive([

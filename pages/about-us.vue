@@ -33,16 +33,20 @@ import OurStory from '@/components/about-us/our-story.vue';
 import Treatments from '@/components/about-us/treatments.vue';
 import Location from '@/components/about-us/location.vue';
 
-useHead({
+useSeoMeta({
     title: 'About Helena Spa – Authentic Ayurvedic Wellness in Ella',
-    meta: [
-        { name: 'description', content: 'Discover Helena Spa, a serene retreat in Ella, Sri Lanka, offering authentic Ayurvedic treatments, professional therapists, and a tranquil ambiance for your well-being.'},
-        { charset: 'utf-8' },
-        { property: 'og:title', content: 'About Helena Spa – Authentic Ayurvedic Wellness in Ella' },
-        { property: 'og:description', content: 'Discover Helena Spa, a serene retreat in Ella, Sri Lanka, offering authentic Ayurvedic treatments, professional therapists, and a tranquil ambiance for your well-being.' },
-        { property: 'og:image', content: 'https://helenaspa.lk/_nuxt/logo.CtJ0T2KF.png' },
-    ]
+    description: 'Discover Helena Spa, a serene retreat in Ella, Sri Lanka, offering authentic Ayurvedic treatments, professional therapists, and a tranquil ambiance for your well-being.',
+    ogTitle: 'About Helena Spa – Authentic Ayurvedic Wellness in Ella',
+    ogDescription: 'Discover Helena Spa, a serene retreat in Ella, Sri Lanka, offering authentic Ayurvedic treatments, professional therapists, and a tranquil ambiance for your well-being.',
+    ogImage: 'https://helenaspa.lk/assets/logo.png',
 });
+
+useSchemaOrg([
+    defineWebPage({
+        name: 'About Helena Spa',
+        description: 'Discover Helena Spa, a serene retreat in Ella, Sri Lanka, offering authentic Ayurvedic treatments.',
+    })
+]);
 
 const list = reactive([
     { name: 'Our Story', isActive: true },
