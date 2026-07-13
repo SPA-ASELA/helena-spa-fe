@@ -73,7 +73,12 @@ export default defineNuxtConfig({
 
   app: {
     head: {
+      title: 'Helena Spa Sri Lanka | Ayurvedic Spa & Wellness in Ella',
       meta: [
+        {
+          name: 'description',
+          content: 'Experience ultimate relaxation with Helena Spa. We offer massage therapies, Ayurvedic treatments and wellness services in Ella, Sri Lanka.'
+        },
         // ⭐ Add this ONLY — AdSense verification
         {
           name: "google-adsense-account",
