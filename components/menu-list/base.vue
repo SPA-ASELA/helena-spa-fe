@@ -5,7 +5,7 @@
             <div v-for="(item, index) in types" :key="index">
                 <Title :label="item.title" :size="'md'" color="prim-light" />
                 <div class="mb-4 block md:hidden w-full relative pt-[40%] rounded-lg overflow-hidden bg-red-50">
-                    <img class="w-full h-full absolute top-0 left-0 object-cover" v-if="item.image" :src="'/assets/menu_list/' + item.image" alt="">
+                    <img class="w-full h-full absolute top-0 left-0 object-cover" v-if="item.image" :src="item.image" alt="">
                 </div>
                 <div class="flex justify-between items-start gap-3">
                     <div>
@@ -29,7 +29,7 @@
                         </table>
                     </div>
                     <div class="w-[250px] h-[150px] flex-shrink-0 rounded-xl hidden md:block overflow-hidden">
-                        <img class="w-full h-full object-cover" v-if="item.image" :src="'/assets/menu_list/' + item.image" alt="">
+                        <img class="w-full h-full object-cover" v-if="item.image" :src="item.image" alt="">
                     </div>
                 </div>
                 <div v-if="index !== types.length - 1" class="w-full h-[1px] mt-10 mb-5 bg-prim-500"></div>

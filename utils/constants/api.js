@@ -16,5 +16,12 @@ export const API_ENDPOINTS = {
     },
     ORDER: {
         SUBMIT: { method: 'POST', url: '/orders' },
+    },
+    MENU: {
+        LIST: { method: 'GET', url: '/menu/get-items' },
+        CATEGORIES: { method: 'GET', url: '/menu/get-all' },
+    },
+    PRICE: {
+        LIST: { method: 'GET', url: '/price/get-items' },
     }
 };
