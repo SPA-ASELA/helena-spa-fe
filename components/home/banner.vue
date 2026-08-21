@@ -9,7 +9,7 @@
                         <Title class="max-w-[900px] mb-[40px]" :label="banner.title" :size="'lg'" :align="'center'"
                             :color="'white'" tag="h1" />
                         <p class="max-w-[900px] mb-[40px]">{{ banner.description }}</p>
-                        <Button @click="btnClick(banner)" :label="banner.buttonType === 'shop' ? 'Shop Now' : 'Book Now'" />
+                        <Button @click="btnClick(banner)":label=" banner.buttonType === 'book'? 'Book Now': banner.buttonType === 'price'? 'View Price List': 'Shop Now'"/>
                     </div>
                 </div>
             </div>
@@ -30,17 +30,34 @@ const modules = [Navigation, Pagination, Autoplay];
 const router = useRouter();
 
 const banners = reactive([
-    { image: '1.webp', title: 'Find Your Inner Peace Through Relaxation and Healing', description: 'Let our expert therapists lead you to total relaxation and renewal with personalized spa treatments designed to refresh both body and mind', buttonType: 'book' },
-    { image: '2.webp', title: 'Rejuvenate with nature\'s best', description: 'explore out exclusive range of organic and spa productions', buttonType: 'shop' },
-    { image: '3.webp', title: 'Discover Serenity and Wellness In Every Moment of Tranquility', description: 'Experience personalized spa treatments designed to revitalize your body, mind, and spirit with natural, soothing care.', buttonType: 'book' },
+  {
+    image: '1.webp',
+    title: 'Find Your Inner Peace Through Relaxation and Healing',
+    description: 'Let our expert therapists lead you to total relaxation and renewal with personalized spa treatments designed to refresh both body and mind',
+    buttonType: 'book'
+  },
+ {
+  image: '2.webp',
+  title: 'Explore Our Spa Treatments & Packages',
+  description: 'Browse our complete range of massages, facials, body treatments, and wellness packages with transparent pricing.',
+  buttonType: 'price'
+},
+  {
+    image: '3.webp',
+    title: 'Discover Serenity and Wellness In Every Moment of Tranquility',
+    description: 'Experience personalized spa treatments designed to revitalize your body, mind, and spirit with natural, soothing care.',
+    buttonType: 'book'
+  },
 ]);
 
 const btnClick = (banner) => {
-    if (banner.buttonType === 'book') {
-        router.push('/appointment')
-    } else {
-        router.push('/shop')
-    }
-}
+  if (banner.buttonType === 'book') {
+    router.push('/appointment');
+  } else if (banner.buttonType === 'price') {
+    router.push('/price-list');
+  } else {
+    router.push('/shop');
+  }
+};
 
 </script>
