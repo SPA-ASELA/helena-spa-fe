@@ -6,6 +6,8 @@
                 <NuxtImg class="w-full h-full absolute top-0 left-0 object-cover" :src="'/assets/price_list/' + item" alt="Spa environment" />
             </div>
         </div>
+        <!-- Skeleton loader while fetching -->
+        <SkeletonsPriceList v-if="isLoading" :count="4" />
         <div v-for="(item, index) in priceData" :key="index">
             <div v-if="!item.isBgDivider" class="container flex flex-col sm:flex-row gap-x-10 gap-y-5">
                 <Title class="block sm:hidden" :label="item.title" :size="'md'" :align="'center'" :marginBottom="false" />
@@ -34,6 +36,7 @@
 import { ref, onMounted } from 'vue';
 import TopBanner from '@/components/uiKit/banner-top.vue';
 import Title from '@/components/uiKit/titles/title.vue';
+import SkeletonsPriceList from '@/components/skeletons/price-list.vue';
 import { apiService } from '@/services/apiService';
 import { API_ENDPOINTS } from '@/utils/constants/api';
 
@@ -54,6 +57,7 @@ useSchemaOrg([
 
 const photoGallery = ['1-1.webp', '1-2.webp', '1-3.webp', '1-4.webp'];
 const priceData = ref([]);
+const isLoading = ref(true);
 
 onMounted(async () => {
     try {
@@ -68,6 +72,8 @@ onMounted(async () => {
         }));
     } catch (e) {
         console.error('Failed to load price items', e);
+    } finally {
+        isLoading.value = false;
     }
 });
 
